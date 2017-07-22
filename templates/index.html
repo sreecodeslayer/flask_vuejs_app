@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+{% include "head.html" %}
+<body>
+<div id="vueApp">
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+
+				<a href="#" class="navbar-brand">VueApp</a>
+			</div>
+			<div class="collapse navbar-collapse" id="nav">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="/about">About</a></li>
+				</ul>
+				
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="jumbotron">
+			
+		<p class="lead">[[ message ]]</p>
+		<p>Please <a href="#" data-toggle="modal" data-target="#loginFormModal">Login</a> or <a href="#" data-toggle="modal" data-target="#signupFormModal">Signup</a> to use the app</p>
+		</div>
+
+	</div>
+</div>
+
+
+<div class="modal fade" role="dialog" id="loginFormModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Login</h4>
+			</div>
+			<div class="modal-body" id="loginForm">
+				<form v-on:submit.prevent="loginUser()">
+					<fieldset>
+						<div class="form-group">
+							<label for="username" class="control-label col-md-2">Username</label>
+							<div class="col-md-10">
+								<input type="text" class="form-control" name="username" v-model="form.username" id="username" placeholder="Enter your username" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="password" class="control-label col-md-2">Password</label>
+							<div class="col-md-10">
+								<input type="password" class="form-control" name="password" v-model="form.password" id="password" placeholder="Enter your password" />
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-md-10 col-md-offset-2">
+								<button type="reset" class="btn btn-default">Clear</button>
+								<button type="submit" v-on:submit.prevent="loginUser()" class="btn btn-success">Login</button>
+							</div>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" role="dialog" id="signupFormModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Signup</h4>
+			</div>
+			<div class="modal-body" id="signupForm">
+				<form v-on:submit.prevent="signupUser()">
+					<fieldset>
+						<div class="form-group" :class="form.has_error">
+							<label for="username" class="control-label col-md-2">Username</label>
+							<div class="col-md-10">
+								<input type="text" class="form-control" name="username" v-model="form.username" id="username" placeholder="Enter your username" />
+								<span class="label label-danger" v-show="form.has_error">[[ form.error_msg ]]</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="password" class="control-label col-md-2">Password</label>
+							<div class="col-md-10">
+								<input type="password" class="form-control" name="password" v-model="form.password" id="password" placeholder="Enter your password" />
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-md-10 col-md-offset-2">
+								<button type="reset" class="btn btn-default" v-on:click="form.has_error=''">Clear</button>
+								<button type="submit" v-on:submit.prevent="signupUser()" class="btn btn-success">Signup</button>
+							</div>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="../static/js/app.js"></script>
+</body>
+</html>

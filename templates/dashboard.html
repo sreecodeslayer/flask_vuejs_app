@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+{% include "head.html" %}
+<body>
+<div id="app">
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+
+				<a href="#" class="navbar-brand">VueApp</a>
+			</div>
+			<div class="collapse navbar-collapse" id="nav">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="/logout">Logout</a></li>
+					<li><a href="/about">About</a></li>
+				</ul>
+				
+			</div>
+		</div>
+	</nav>
+	<div class="container-fluid">
+	<div class="row">	
+		<div class="col-sm-3 col-md-2 sidebar" style="background-color:#f5f5f5;">
+			<ul class="nav nav-sidebar">
+				<!-- Router links for Vue-router -->
+				<li><router-link to="/add">Add Photo</router-link></li>
+				<li><router-link to="/album">View Album</router-link></li>
+				<!-- <li><router-link to="/page3">Page 3</router-link></li>
+				<li><router-link to="/page4">Page 4</router-link></li> -->
+			</ul>
+		</div>
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			<h1 class="page-header">Dashboard</h1>
+			<!-- Dynamically route with VueJS -->
+			<router-view></router-view>
+		</div>
+	</div>
+	</div>
+</div>
+<script type="text/javascript" src="{{ url_for('protected', filename='main.js') }}"></script>
+</body>
+
+</html>
